@@ -18,6 +18,10 @@ public class BookModel {
     @Column(length = 30)
     private String phone;
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

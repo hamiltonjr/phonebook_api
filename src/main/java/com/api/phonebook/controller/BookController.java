@@ -1,14 +1,15 @@
 package com.api.phonebook.controller;
 import com.api.phonebook.model.BookModel;
+import com.api.phonebook.model.ResponseModel;
 import com.api.phonebook.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController {
     @Autowired
-    private BookService ibs;
+    private BookService bs;
 
     @GetMapping("/")
     public String index() {
@@ -17,7 +18,22 @@ public class BookController {
 
     @GetMapping("/read")
     public Iterable<BookModel> read() {
-        return ibs.read();
+        return bs.read();
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody BookModel bm) {
+        return bs.create(bm);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody BookModel bm) {
+        return bs.update(bm);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ResponseModel> delete(@PathVariable Long id) {
+        return bs.delete(id);
     }
 
 }
