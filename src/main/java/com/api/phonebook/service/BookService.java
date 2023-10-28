@@ -34,7 +34,7 @@ public class BookService {
             return new ResponseEntity<>(rm, HttpStatus.BAD_REQUEST);
         }
 
-        rm.setMessage("User was created");
+        rm.setMessage("Contact was created");
         return new ResponseEntity<>(br.save(pm), HttpStatus.CREATED);
 
     }
@@ -53,7 +53,7 @@ public class BookService {
             return new ResponseEntity<>(rm, HttpStatus.BAD_REQUEST);
         }
 
-        rm.setMessage("User was updated");
+        rm.setMessage("Contact was updated");
         return new ResponseEntity<>(br.save(pm), HttpStatus.OK);
 
     }
@@ -61,7 +61,7 @@ public class BookService {
 
     public ResponseEntity<ResponseModel> delete(Long id) {
         br.deleteById(id);
-        rm.setMessage("User was removed!");
+        rm.setMessage("Contact was removed!");
         return new ResponseEntity<>(rm, HttpStatus.OK);
     }
 
